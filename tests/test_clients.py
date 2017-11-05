@@ -12,7 +12,7 @@ class FlaskClientTestCase(unittest.TestCase):
         db.create_all()
         Role.insert_roles()
         User.init_users()
-        WTF_CSRF_ENABLED = False
+
         self.client = self.app.test_client(use_cookies=True)
     def tearDown(self):
         db.session.remove()
@@ -30,5 +30,5 @@ class FlaskClientTestCase(unittest.TestCase):
         }, follow_redirects=True)
 
         data = response.get_data(as_text=True)
-        self.assertTrue('001' in data)
-        print(data)
+
+        self.assertTrue('Enquery' in data)
